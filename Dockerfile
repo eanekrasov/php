@@ -6,8 +6,7 @@ RUN apk --no-cache add supervisor aspell-dev aspell-ru aspell-en icu-dev libintl
 
 COPY conf.d/www.conf /usr/local/etc/php-fpm.d/www.conf
 COPY init.sh /init.sh
-RUN chmod +x /init.sh
 
 WORKDIR /app
 
-CMD ["/init.sh"]
+CMD ["/bin/sh", "/init.sh"]
