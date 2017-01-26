@@ -1,4 +1,6 @@
 0 * * * * /app/yii history/clear 2>&1
 * * * * * /app/yii cron
+* * * * * /app/yii yml
+* * * * * /app/yii yml/parse
 5 * * * * /app/yii statistics
 0 2 * * * /app/yii cron/parse-new-models 2>&1
