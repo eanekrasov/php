@@ -5,8 +5,8 @@ RUN apk --no-cache add supervisor aspell-dev aspell-ru aspell-en icu-dev libintl
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN apk add --no-cache autoconf g++ make libuuid && \
-    pecl install uuid && \
-    docker-php-ext-enable uuid
+    pecl install pthreads && \
+    docker-php-ext-enable pthreads
 
 COPY conf.d/www.conf /usr/local/etc/php-fpm.d/www.conf
 COPY init.sh /init.sh
