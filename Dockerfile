@@ -1,4 +1,4 @@
-FROM php:7-zts-alpine
+FROM php:7-fpm-alpine
 
 RUN apk --no-cache add supervisor aspell-dev aspell-ru aspell-en icu-dev libintl gettext-dev && \
     docker-php-ext-install pdo_mysql intl opcache mbstring gettext bcmath pcntl pspell && \
