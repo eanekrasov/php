@@ -191,7 +191,6 @@ RUN apk --no-cache add supervisor aspell-dev aspell-ru aspell-en icu-dev libintl
 RUN apk add --no-cache autoconf g++ make libuuid
 
 RUN pecl install pthreads
-RUN docker-php-ext-enable pthreads
 
 COPY conf.d/www.conf /usr/local/etc/php-fpm.d/www.conf
 COPY init.sh /init.sh
