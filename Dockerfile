@@ -48,11 +48,11 @@ ENV PHP_CFLAGS="-fstack-protector-strong -fpic -fpie -O2"
 ENV PHP_CPPFLAGS="$PHP_CFLAGS"
 ENV PHP_LDFLAGS="-Wl,-O1 -Wl,--hash-style=both -pie"
 
-ENV GPG_KEYS A917B1ECDA84AEC2B568FED6F50ABC807BD5DCD0 528995BFEDFBA7191D46839EF9BA0ADA31CBD89E
+ENV GPG_KEYS 1A4E8B7277C42E53DBA9C7B9BCAA30EA9C0D5763 6E4F6AB321FDC07F2C332E3AC2BF0BC433CFC8B3
 
-ENV PHP_VERSION 7.1.1
-ENV PHP_URL="https://secure.php.net/get/php-7.1.1.tar.xz/from/this/mirror" PHP_ASC_URL="https://secure.php.net/get/php-7.1.1.tar.xz.asc/from/this/mirror"
-ENV PHP_SHA256="b3565b0c1441064eba204821608df1ec7367abff881286898d900c2c2a5ffe70" PHP_MD5="65eef256f6e7104a05361939f5e23ada"
+ENV PHP_VERSION 7.0.15
+ENV PHP_URL="https://secure.php.net/get/php-7.0.15.tar.xz/from/this/mirror" PHP_ASC_URL="https://secure.php.net/get/php-7.0.15.tar.xz.asc/from/this/mirror"
+ENV PHP_SHA256="300364d57fc4a6176ff7d52d390ee870ab6e30df121026649f8e7e0b9657fe93" PHP_MD5="dca23412f3e3b3987e582091b751925d"
 
 RUN set -xe; \
 	\
@@ -189,6 +189,9 @@ RUN apk --no-cache add supervisor aspell-dev aspell-ru aspell-en icu-dev libintl
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN apk add --no-cache autoconf g++ make libuuid
+
+RUN pecl install pthreads
+RUN docker-php-ext-enable pthreads
 
 COPY conf.d/www.conf /usr/local/etc/php-fpm.d/www.conf
 COPY init.sh /init.sh
