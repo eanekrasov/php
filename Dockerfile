@@ -90,7 +90,6 @@ RUN set -xe \
 		libedit-dev \
 		libxml2-dev \
 		openssl-dev \
-		pcre-dev \
 		sqlite-dev \
 	\
 	&& export CFLAGS="$PHP_CFLAGS" \
@@ -115,10 +114,6 @@ RUN set -xe \
 		--with-libedit \
 		--with-openssl \
 		--with-zlib \
-		\
-# bundled pcre is too old for s390x (which isn't exactly a good sign)
-# /usr/src/php/ext/pcre/pcrelib/pcre_jit_compile.c:65:2: error: #error Unsupported architecture
-		--with-pcre-regex=/usr \
 		\
         $PHP_EXTRA_CONFIGURE_ARGS \
 	&& make -j "$(nproc)" \
