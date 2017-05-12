@@ -196,6 +196,9 @@ RUN pecl install pthreads
 COPY conf.d/www.conf /usr/local/etc/php-fpm.d/www.conf
 COPY init.sh /init.sh
 COPY crontab /var/spool/cron/crontabs/root
-WORKDIR /app
 
+# xdebug
+RUN curl -O http://xdebug.org/files/xdebug-2.5.3.tgz && tar -xvzf xdebug-2.5.3.tgz && cd xdebug-2.5.3 && phpize && ./configure && make && cp modules/xdebug.so /usr/local/lib/php/extensions/no-debug-zts-20160303 && docker-php-ext-enable xdebug
+
+WORKDIR /app
 CMD ["/bin/sh", "/init.sh"]
