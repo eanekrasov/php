@@ -188,6 +188,6 @@ COPY init.sh /init.sh
 RUN curl -O https://xdebug.org/files/xdebug-2.5.3.tgz && tar -xvzf xdebug-2.5.3.tgz && cd xdebug-2.5.3 && phpize && ./configure && make && cp modules/xdebug.so /usr/local/lib/php/extensions/no-debug-zts-20160303 && docker-php-ext-enable xdebug
 
 WORKDIR /app
-ENTRYPOINT ["init.sh"]
+ENTRYPOINT ["/init.sh"]
 EXPOSE 9000
 CMD ["php-fpm"]
