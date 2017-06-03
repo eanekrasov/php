@@ -91,6 +91,8 @@ RUN set -xe \
 		libxml2-dev \
 		openssl-dev \
 		sqlite-dev \
+		libpng-dev \
+		libmcrypt-dev \
 	\
 	&& export CFLAGS="$PHP_CFLAGS" \
 		CPPFLAGS="$PHP_CPPFLAGS" \
