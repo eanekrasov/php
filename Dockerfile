@@ -91,8 +91,6 @@ RUN set -xe \
 		libxml2-dev \
 		openssl-dev \
 		sqlite-dev \
-		libpng-dev \
-		libmcrypt-dev \
 	\
 	&& export CFLAGS="$PHP_CFLAGS" \
 		CPPFLAGS="$PHP_CPPFLAGS" \
@@ -175,7 +173,7 @@ RUN set -ex \
 		echo 'listen = [::]:9000'; \
 	} | tee php-fpm.d/zz-docker.conf
 
-RUN apk --no-cache add supervisor aspell-dev aspell-ru aspell-en icu-dev libintl gettext-dev && \
+RUN apk --no-cache add supervisor aspell-dev aspell-ru aspell-en icu-dev libintl gettext-dev libpng-dev libmcrypt-dev && \
     docker-php-ext-install pdo_mysql intl opcache mbstring gettext bcmath gd zip mcrypt pcntl pspell sockets && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
