@@ -174,7 +174,7 @@ RUN set -ex \
 	} | tee php-fpm.d/zz-docker.conf
 
 RUN apk --no-cache add supervisor aspell-dev aspell-ru aspell-en icu-dev libintl gettext-dev libpng-dev libmcrypt-dev && \
-    docker-php-ext-install pdo_mysql intl opcache mbstring gettext bcmath gd zip mcrypt pcntl pspell sockets && \
+    docker-php-ext-install pdo_mysql intl opcache mbstring gettext bcmath gd zip mcrypt pcntl pspell sockets mysqli && \
     curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN apk add --no-cache autoconf g++ make libuuid
